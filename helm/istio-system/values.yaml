@@ -8,14 +8,13 @@ gateway:
   name: istio-ingress
   global:
     istioNamespace: istio-system
+    hub: docker.io/istio
+    tag: "1.29.1"
   service:
     type: NodePort
   autoscaling:
     enabled: false
   nodeSelector:
     kubernetes.io/arch: amd64
-  image:
-    repository: docker.io/istio/proxyv2
-    tag: "1.29.1"
 
 base: {}
