@@ -1,0 +1,10 @@
+apiVersion: v2
+name: istio-system-wrapper
+description: Wrapper chart to install base via Helm
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: base
+    version: "1.29.1"
+    repository: https://istio-release.storage.googleapis.com/charts

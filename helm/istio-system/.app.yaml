@@ -1,0 +1,4 @@
+name: istio-system
+namespace: istio-system
+type: helm
+wave: '1'

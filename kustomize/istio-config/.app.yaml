@@ -1,0 +1,4 @@
+name: istio-config
+namespace: istio-system
+type: kustomize
+wave: '2'
