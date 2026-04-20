@@ -47,7 +47,7 @@ spec:
   host: n8n.local
   trafficPolicy:
     tls:
-      mode: SIMPLE
+      mode: DISABLE
       insecureSkipVerify: true
 ---
 apiVersion: networking.istio.io/v1beta1
