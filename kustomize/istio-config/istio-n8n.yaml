@@ -36,7 +36,7 @@ spec:
         - destination:
             host: n8n.local
             port:
-              number: 8006
+              number: 5678
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
