@@ -5,3 +5,4 @@ resources:
   - istio-local.yaml
   - istio-headlamp.yaml
   - istio-proxmox.yaml
+  - istio-n8n.yaml
