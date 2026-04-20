@@ -62,7 +62,7 @@ spec:
   ports:
     - number: 5678
       name: https-n8n
-      protocol: HTTPS
+      protocol: HTTP
   resolution: STATIC
   endpoints:
     - address: 192.168.1.99
