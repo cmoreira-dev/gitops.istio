@@ -1,0 +1,68 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: n8n-gw
+  namespace: istio-system
+spec:
+  selector:
+    app: istio-ingress
+    istio: ingress
+  servers:
+    - hosts:
+        - n8n.cmoreira.dev
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: n8n-vs
+  namespace: istio-system
+spec:
+  gateways:
+    - istio-system/n8n-gw
+  hosts:
+    - n8n.cmoreira.dev
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: n8n.local
+            port:
+              number: 8006
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: n8n-external-dr
+  namespace: istio-system
+spec:
+  host: n8n.local
+  trafficPolicy:
+    tls:
+      mode: SIMPLE
+      insecureSkipVerify: true
+---
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: n8n-external
+  namespace: istio-system
+spec:
+  hosts:
+    - n8n.local
+  location: MESH_EXTERNAL
+  ports:
+    - number: 5678
+      name: https-n8n
+      protocol: HTTPS
+  resolution: STATIC
+  endpoints:
+    - address: 192.168.1.99
