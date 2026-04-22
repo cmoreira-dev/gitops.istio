@@ -20,8 +20,11 @@ spec:
       - ServerSideApply=true
       - CreateNamespace=true
     ignoreDifferences:
-      - group: admissionregistration.k8s.io
-        kind: ValidatingWebhookConfiguration
-        jsonPointers:
-          - /webhooks/0/failurePolicy
-          - /webhooks/1/failurePolicy
+      - kind: ValidatingWebhookConfiguration
+        name: validation.istio.io
+        jqPathExpressions:
+          - .webhooks[].failurePolicy
+      - kind: ValidatingWebhookConfiguration
+        name: rev.validation.istio.io
+        jqPathExpressions:
+          - .webhooks[].failurePolicy
