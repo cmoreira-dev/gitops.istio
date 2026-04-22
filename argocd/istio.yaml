@@ -19,12 +19,3 @@ spec:
     syncOptions:
       - ServerSideApply=true
       - CreateNamespace=true
-    ignoreDifferences:
-      - kind: ValidatingWebhookConfiguration
-        name: validation.istio.io
-        jqPathExpressions:
-          - .webhooks[].failurePolicy
-      - kind: ValidatingWebhookConfiguration
-        name: rev.validation.istio.io
-        jqPathExpressions:
-          - .webhooks[].failurePolicy
