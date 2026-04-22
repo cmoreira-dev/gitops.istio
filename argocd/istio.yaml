@@ -6,7 +6,7 @@ metadata:
 spec:
   project: homelab
   source:
-    repoURL: https://github.com/cmoreira-dev/gitops.observability.git
+    repoURL: https://github.com/cmoreira-dev/gitops.istio.git
     targetRevision: main
     path: helm/istio-system
   destination:
