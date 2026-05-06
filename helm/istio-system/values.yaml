@@ -3,6 +3,10 @@ istiod:
     istioNamespace: istio-system
   nodeSelector:
     kubernetes.io/arch: amd64
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
 
 gateway:
   name: istio-ingress
